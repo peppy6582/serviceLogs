@@ -1,0 +1,29 @@
+<section data-ng-controller="DepartmentsController" data-ng-init="find()">
+    <div class="bootcards-list">
+        <div class="panel panel-default md-whiteframe-z2">
+            <md-content layout="column" layout-align="center center">
+                <h1>Departments</h1>
+            </md-content>
+        </div>
+    </div>
+    <div class="bootcards-list">
+        <div class="panel panel-default md-whiteframe-z4">
+            <div data-ng-repeat="department in departments" class="list-group">
+                <a data-ng-href="#!/departments/{{department._id}}" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="list-group-item-heading" data-ng-bind="department.name"></h2>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Created:</label>
+                            <p class="list-group-item-heading" data-ng-bind="department.created | date:'medium'"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!departments.$resolved || departments.length">
+    	No Departments yet, why don't you <a href="/#!/departments/create">create one</a>?
+    </div>
+</section>
