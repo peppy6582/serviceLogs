@@ -1,0 +1,49 @@
+<section data-ng-controller="DepartmentsController" data-ng-init="findOne()">
+	<!-- Floating Department Header -->
+	<div class="bootcards-list">
+		<div class="panel panel-default md-whiteframe-z4">
+			<md-content layout="column" layout-align="center center">
+				<h1 data-ng-bind="department.name"></h1>
+			</md-content>
+		</div>
+	</div>
+	<!--Floating Department Details-->
+	<div class="bootcards-list">
+		<div class="panel panel-default md-whiteframe-z4">
+			<div layout="row" layout-padding layout-margin>
+				<md-content layout="column" flex="70">
+					<h4 class="list-group-item-heading"><b>Contact:</b></h4>
+					<h4 class="list-group-item-heading">{{department.contact}}</h4>
+					<h4 class="list-group-item-heading">{{department.email}}</h4>
+				</md-content>
+				<md-content layout="column" flex="20" >
+					<h4 class="list-group-item-heading"><b>Address:</b></h4>
+					<h4 class="list-group-item-heading">{{department.address}}</h4>
+					<h4 class="list-group-item-heading">{{department.city}}, {{department.state}}</h4>
+				</md-content>
+			</div>
+			<div class="panel-footer">
+				<div layout="row" flex="80" layout-align="space-around center">
+					<small>
+						<em class="text-muted">
+							Created on
+							<span data-ng-bind="department.created | date:'mediumDate'"></span>
+							by
+							<span data-ng-bind="department.user.displayName"></span>
+						</em>
+					</small>
+					<div flex="10">
+						<md-button class="btn btn-primary md-hue-2" href="/#!/departments/{{department._id}}/edit" data-ng-show="((authentication.user) && (authentication.user._id == department.user._id))"><i class="glyphicon glyphicon-edit"></i></md-button>
+						<md-button class="md-warn md-hue-2" data-ng-click="remove();"><i class="glyphicon glyphicon-trash"></i></md-button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Floating Buttons-->
+	<div class="bootcards-list">
+
+	</div>
+
+
+</section>

@@ -1,0 +1,53 @@
+<section data-ng-controller="DepartmentsController">
+    <md-card>
+        <md-subheader>
+            <h1>New Department</h1>
+        </md-subheader>
+        <div data-ng-controller="departmentInputCtrl" layout="column">
+            <form name="departmentForm" data-ng-submit="create()" novalidate>
+                <md-content class="md-padding" layout="row" layout-sm="column" style="font-size:1.3em">
+                    <md-input-container flex="33">
+                        <label>Name</label>
+                        <input ng-model="department.name" required>
+                    </md-input-container>
+                    <md-input-container flex="33">
+                        <label>Contact</label>
+                        <input ng-model="department.contact" required>
+                    </md-input-container>
+                    <md-input-container flex="33">
+                        <label>Email</label>
+                        <input ng-model="department.email" type="email" required>
+                    </md-input-container>
+                </md-content>
+                <md-content class="md-padding">
+                        <md-input-container flex>
+                            <label>Address</label>
+                            <input ng-model="department.address" required>
+                        </md-input-container>
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>City</label>
+                                <input ng-model="department.city" required>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>State</label>
+                                <input ng-model="department.state" required>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Postal Code</label>
+                                <input ng-model="department.postalCode" required>
+                            </md-input-container>
+                        </div>
+                </md-content>
+                <md-content class="md-padding">
+                    <md-input-container flex>
+                        <md-button class="md-raised">Submit</md-button>
+                    </md-input-container>
+                </md-content>
+            </form>
+        </div>
+    </md-card>
+    <div data-ng-show="error" class="text-danger">
+        <strong data-ng-bind="error"></strong>
+    </div>
+</section>

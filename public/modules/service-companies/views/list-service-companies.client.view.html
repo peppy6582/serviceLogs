@@ -1,0 +1,19 @@
+<section data-ng-controller="ServiceCompaniesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Service companies</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="serviceCompany in serviceCompanies" data-ng-href="#!/service-companies/{{serviceCompany._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="serviceCompany.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="serviceCompany.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="serviceCompany.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!serviceCompanies.$resolved || serviceCompanies.length">
+    	No Service companies yet, why don't you <a href="/#!/service-companies/create">create one</a>?
+    </div>
+</section>

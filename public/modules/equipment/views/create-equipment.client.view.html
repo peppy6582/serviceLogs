@@ -1,0 +1,40 @@
+<section data-ng-controller="EquipmentController">
+    <div class="panel panel-default md-whiteframe-z4">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">Add Equipment</h3>
+        </div>
+        <div data-ng-controller="equipmentInputCtrl" class="modal-body">
+            <form name="equipmentForm" data-ng-submit="create()" novalidate>
+                <md-content class="md-padding" layout="column" style="font-size:1.3em" layout-align="left center" layout-padding>
+                    <md-input-container>
+                        <label>Department</label>
+                    </md-input-container>
+                    <md-select ng-controller="departmentSelectCtrl" ng-model="equipment.department" placeholder="Shipping" data-ng-init="findDepartments()" required>
+                        <md-option ng-value="department.name" ng-repeat="department in departments">{{department.name}}</md-option>
+                    </md-select>
+                </md-content>
+                <md-content class="md-padding" layout="row" layout-sm="column" style="font-size:1.3em" layout-padding>
+                    <md-input-container flex="40">
+                        <label>Name</label>
+                        <input ng-model="equipment.name" required>
+                    </md-input-container>
+                    <md-input-container flex="40">
+                        <label>Model No</label>
+                        <input ng-model="equipment.model" required>
+                    </md-input-container>
+                </md-content>
+                <md-content class="md-padding" layout="column" style="font-size:1.3em">
+                    <md-input-container flex>
+                        <label>Description</label>
+                        <textarea ng-model="equipment.description" columns="1" md-maxlength="150" required></textarea>
+                    </md-input-container>
+                </md-content>
+                <md-content class="md-padding">
+                    <md-input-container flex>
+                        <md-button class="md-raised">Submit</md-button>
+                    </md-input-container>
+                </md-content>
+            </form>
+        </div>
+    </div>
+</section>

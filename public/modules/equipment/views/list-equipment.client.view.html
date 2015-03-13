@@ -1,0 +1,68 @@
+<section data-ng-controller="EquipmentController" data-ng-init="find()">
+	<div class="bootcards-list">
+		<div class="panel panel-default md-whiteframe-z2">
+			<md-content layout="column" layout-align="center center">
+				<h1>Equipment</h1>
+			</md-content>
+		</div>
+	</div>
+    <div class="bootcards-list">
+        <div class="panel panel-default filters md-whiteframe-z4"  ng-controller="EquipmentController">
+            <md-switch ng-model="equipment.filters" aria-label="equipmentFilters" ng-click="equipmentFilters = !equipmentFilters">
+                Filters
+            </md-switch>
+			<md-content flex="33" ng-show="equipmentFilters" class="md-padding" layout="column" style="font-size:1.2em">
+				<div layout="column">
+					<label>Search</label>
+					<md-input-container>
+						<input ng-model="equipment.searchText">
+					</md-input-container>
+					<label>Department</label>
+					<md-select ng-controller="departmentSelectCtrl" ng-model="equipment.department" placeholder="Select Department" data-ng-init="findDepartments()" required>
+						<md-option ng-value="department.name" ng-repeat="department in departments">{{department.name}}</md-option>
+						<md-option ng-value="department.name">All</md-option>
+					</md-select>
+				</div>
+			</md-content>
+        </div>
+    </div>
+	<div class="bootcards-list">
+		<div class="panel panel-default  md-whiteframe-z5">
+			<div data-ng-repeat="equipment in equipment | filter: equipment.department | filter: equipment.searchText" class="list-group">
+				<a data-ng-href="#!/equipment/{{equipment._id}}/edit" class="list-group-item">
+					<div class="row">
+						<div class="col-md-6">
+							<h4 class="list-group-item-heading" data-ng-bind="equipment.name"></h4>
+						</div>
+						<div class="col-md-6">
+							<p class="list-group-item-heading" data-ng-bind="equipment.department"></p>
+						</div>
+					</div>
+				</a>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-md-2">
+							<small>
+								<p class="list-group-item-text">Created by:{{equipment.user.displayName}}</p>
+							</small>
+							<small>
+								<p class="list-group-item-text">On:{{equipment.created | date:'medium'}}</p>
+							</small>
+						</div>
+						<div align="right">
+							<small>
+								<p class="list-group-item-text">Last modified by: {{equipment.user.displayName}}</p>
+							</small>
+							<small>
+								<p class="list-group-item-text">On: {{equipment.created | date:'medium'}}</p>
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="alert alert-warning text-center" data-ng-hide="!equipment.$resolved || equipment.length">
+		No Equipment yet, why don't you <a href="/#!/equipment/create">add some</a>?
+	</div>
+</section>
