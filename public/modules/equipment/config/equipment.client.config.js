@@ -7,5 +7,7 @@ angular.module('equipment').run(['Menus',
 		Menus.addMenuItem('topbar', 'Equipment', 'equipment', 'dropdown', '/equipment(/create)?');
 		Menus.addSubMenuItem('topbar', 'equipment', 'List Equipment', 'equipment');
 		Menus.addSubMenuItem('topbar', 'equipment', 'New Equipment', 'equipment/create');
+        Menus.addSubMenuItem('topbar', 'equipment', 'List Departments', 'departments');
+        Menus.addSubMenuItem('topbar', 'equipment', 'New Department', 'departments/create');
 	}
 ]);
